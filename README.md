@@ -44,9 +44,33 @@
       - Algorithm replacement is vastly more effective than code fiddling.
 
 ### And Then There Was JavaScript
-  - #### History of JavaScript
-    - The first important discovery in 21st century -- JavaScript has good parts
-    -  
+  - #### Classes vs Prototypes
+    - Create new instances inherit from that object.
+    - Customize the new objects.
+    - Taxonomy and classification are not necessary.
+    - Delegation, differential inheritance
+    - What 'new' key word does:
+  ```js
+  function new(func, args){
+    var that = Object.create(func.prototype);
+    var result = func.apply(that, args);
+    return (typeof result === 'object' && result) || that;
+  }
+  ```
+    - Keys must be string, automatic type coercion
+  - #### There is one number type in JavaScript
+    - 64-bit floating point
+    - IEEE-754 ("Double")
+    - JavaScript borrowed a lot of bad ideas from Java, one of these is Math object.
+    - It would be better to put Math object methods into Number.
+    - NaN, not a number, but typeof NaN is 'number'
+  - #### Strings and Arrays
+    - UCS-2, not quite UTF-16.
+    - Strings are Immutable.
+    - Array inherits from Object.
+    - Indexes are converted to strings and used as names for retrieving values.
+    - Very efficient for sparse arrays.
+    - No need to provide length or type when creating an array.
 
 
 
