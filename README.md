@@ -72,8 +72,25 @@
     - Very efficient for sparse arrays.
     - No need to provide length or type when creating an array.
 
-
-
+### Function and the Ultimate
+  - #### Background
+    - Method, Class, Constructor and Module
+    - Function objects are first class
+    - A variable declared anywhere within a function is visible everywhere within the function
+    - this, contains a reference to the object of invocation
+  - #### Function as Subroutines
+    - Code Reuse
+    - Decomposition
+    - Modularity
+    - Expressiveness
+    - Higher order
+    - Closure
+      - The context of an inner function includes scope of the outer function
+      - An inner function enjoys that context even after the parent functions have returned
+  - #### Prototypal Inheritance
+    - Treating function as modules.
+    - Module pattern is easily transformed into a powerful constructor pattern.
+    - Do **NOT** declare functions in loop
 
 
 
