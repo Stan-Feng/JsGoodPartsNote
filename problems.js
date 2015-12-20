@@ -111,7 +111,74 @@ function methodize(func) {
 //     return func(this, ...y);
 //   };
 // }
-methodize(add);
+
+/**
+ * @todo: Write demethodize, a function converts a method to a binary function
+ * @example: demethodize(Number.prototype.add)(5, 6) --> 11
+ */
+function demethodize(func) {
+  return function (that, y) {
+    return func.call(that, y);
+  };
+}
+Number.prototype.add = function (num) {
+  return this + num;
+};
+var result = demethodize(Number.prototype.add);
+
+
+/**
+ * @todo: Write a function twice
+ * @param: takes a binary function
+ * @return: a unary function passes its argument to the binary function twice
+ * @example: var double = twice(add);
+ *           double(11) --> 22
+ *           var squre = twice(null);
+ *           square(11) --> 121
+ */
+function twice(func) {
+  return function (num) {
+    return func(num, num);
+  };
+}
+var double = twice(add);
+// console.log(double(11));
+var square = twice(mul);
+// console.log(square(11));
+
+/**
+ * @todo: Write a function composeu
+ * @param: takes two unary functions
+ * @return: a unary function calls them both
+ * @example: composeu(double, square)(3) --> 36
+ */
+function composeu(firstFunc, secondFunc) {
+  return function (num) {
+    return secondFunc(firstFunc(num));
+  };
+}
+
+/**
+ * @todo: Write a function composeb
+ * @param: takes two unary functions
+ * @return: a function calls them both
+ * @example: composeb(double, square)(2, 3, 5) --> 25
+ */
+function composeb(f, g) {
+  return function (a, b, c) {
+    return g(f(a, b), c);
+  };
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
