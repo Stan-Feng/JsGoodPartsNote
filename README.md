@@ -92,5 +92,20 @@
     - Module pattern is easily transformed into a powerful constructor pattern.
     - Do **NOT** declare functions in loop
 
-
-
+### Monads & Gonads
+  - #### Functional Programming
+    - Programming with functions
+      - First Class Functions
+      - Higher Order Functions
+      - Lexical Closure
+    - Pure Functional Programming
+      - Mathematical Programming
+      - Functions as Maps
+      - Mathematical functions are used to reason about
+      - which means programming without side-effects
+      - which means removing assignment, loops(use recursion instead), freeze all array literals and object literals
+      - It's really hard
+    - Immutability makes it hard to interact with the real world
+  - #### Monads
+    - A loophole in the function contract --> Every times you call a function with the same parameter will get the same result
+    - \
