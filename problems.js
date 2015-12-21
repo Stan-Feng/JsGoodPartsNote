@@ -4,7 +4,6 @@ function funky(o) {
 }
 var x = [];
 funky(x);
-console.log(x); //[]
 // 'o' is the value of parameter, the 'o = null' changes where 'o' points to, does not change 'x'.
 
 
@@ -16,7 +15,6 @@ function swap(a, b) {
 var x = 1;
 var y = 2;
 swap(x, y);
-console.log(x); //1
 //It does not see the variables passed in, it only see the value passed in.
 //*****************************************
 
@@ -172,9 +170,76 @@ function composeb(f, g) {
 
 
 
+/**
+ * @todo: Write a function that allows another function to only be called once
+ * @example: add_once = once(add);
+ *           add_once(3, 4); --> 7
+ *           add_once(3, 4); --> throw
+ */
+function once(func) {
+  return function () {
+    var f = func;
+    func = null;
+    return f.apply(this, arguments);
+  };
+}
+// var add_once = once(add);
+// console.log(add_once(3, 4));
+// console.log(add_once(3, 4));
+
+
+/**
+ * @todo: Write a factory function
+ * @return: two functions implement an up/down counter
+ * @example: counter = counterf(10);
+ *           couter.inc() --> 11
+ *           couter.dec() --> 10
+ */
+function counterf(initNum) {
+  return {
+    inc: () => {
+      initNum += 1;
+      return initNum;
+    },
+
+    dec: () => {
+      initNum -= 1;
+      return initNum;
+    }
+  };
+}
+// var counter = counterf(10);
+// counter.inc();
+// counter.dec();
 
 
 
+
+/**
+ * @todo: Make a revocable function
+ * @param: Takes a nice function
+ * @return: a revoke function which takes denies access to the nice function
+          + an invoke function which can invoke the nice function untill is revoked.
+ * @example: temp = revocable(alert);
+ *           temp.invoke(7)  --> alert 7
+ *           temp.revoke();
+ *           temp.invoke(8)  --> throw error
+ */
+function revocable(func) {
+  return {
+    invoke () {
+      func.apply(this, arguments);
+    },
+
+    revoke ()  {
+      func = null;
+    }
+  };
+}
+// var temp = revocable(console.log);
+// temp.invoke(7);
+// temp.revoke();
+// temp.invoke(8) ;
 
 
 
